@@ -1,12 +1,12 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = ({store}) => {
+const TodoList = ({state}) => {
     return (
         (
             <ul>
                 {
-                    store.getState().todos.map(todo =>{
+                    state.todos.map(todo =>{
                     return <Todo text={todo.text}/>
                 }
                 )}
