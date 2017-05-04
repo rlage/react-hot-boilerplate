@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Todo = ({text}) => {
-    console.log(text);
+const Todo = ({text, completed, onClick}) => {
     return (
         (
-            <li>
+            <li onClick={onClick} style={
+                {
+                    textDecoration: completed ? 'line-through' : 'none'}
+                }
+            >
                 {text}
             </li>
         )

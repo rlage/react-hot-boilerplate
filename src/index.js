@@ -3,18 +3,15 @@ import ReactDOM from 'react-dom';
 import TodoApp from './Components/TodoApp'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
-import todos from './reducers'
+import todoApp from './reducers/index'
 
-let store = createStore(todos);
-console.log(store);
+let store = createStore(todoApp);
 console.log(store.getState());
-
-
 
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
-            <TodoApp dispatch={store.dispatch} state={store.getState()}/>
+            <TodoApp dispatch={store.dispatch} todos={store.getState().todos} visibilityFilter={store.getState().visibilityFilter}/>
         </Provider>,
         document.getElementById("root")
     );
