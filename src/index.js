@@ -11,7 +11,7 @@ console.log(store.getState());
 const render = () => {
     ReactDOM.render(
         <Provider store={store}>
-            <TodoApp dispatch={store.dispatch} todos={store.getState().todos} visibilityFilter={store.getState().visibilityFilter}/>
+            <TodoApp store={store} dispatch={store.dispatch} todos={store.getState().todos} visibilityFilter={store.getState().visibilityFilter}/>
         </Provider>,
         document.getElementById("root")
     );

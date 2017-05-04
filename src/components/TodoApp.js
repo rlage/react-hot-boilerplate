@@ -15,7 +15,7 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 let nextTodoId = 0;
-const TodoApp = ({dispatch, todos, visibilityFilter}) => (
+const TodoApp = ({store, dispatch, todos, visibilityFilter}) => (
     <div>
         <AddTodo onAddClick={
             (text) => {
@@ -34,11 +34,7 @@ const TodoApp = ({dispatch, todos, visibilityFilter}) => (
                 })
             }
         }/>
-        <Footer visibilityFilter={visibilityFilter} onFilterClick={filter => dispatch({
-                type: 'SET_VISIBILITY_FILTER',
-                filter
-            })}
-        />
+        <Footer store={store}/>
     </div>
 )
 
