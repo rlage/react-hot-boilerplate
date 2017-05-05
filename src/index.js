@@ -1,20 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import TodoApp from './Components/TodoApp'
+import TodoApp from './Components/TodoApp';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux'
-import todoApp from './reducers/index'
+import { Provider } from 'react-redux';
+import todoApp from './reducers/index';
 
-let store = createStore(todoApp);
-console.log(store.getState());
+Provider.childContextTypes = {
+    store: React.PropTypes.object
+}
 
-const render = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <TodoApp store={store} dispatch={store.dispatch} todos={store.getState().todos} visibilityFilter={store.getState().visibilityFilter}/>
-        </Provider>,
-        document.getElementById("root")
-    );
-};
-
-render();
+ReactDOM.render(
+    <Provider store={createStore(todoApp)}>
+        <TodoApp />
+    </Provider>,
+    document.getElementById("root")
+);

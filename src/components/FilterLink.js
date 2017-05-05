@@ -3,7 +3,8 @@ import Link from './Link';
 
 class FilterLink extends React.Component {
     componentDidMount() {
-        this.unsubscribe = this.props.store.subscribe(() =>
+        const {store} = this.context;
+        this.unsubscribe = store.subscribe(() =>
             this.forceUpdate()
         );
     }
@@ -12,9 +13,10 @@ class FilterLink extends React.Component {
         this.unsubscribe();
     }
     render() {
+        const {store} = this.context;
         const props = this.props;
         console.log(props);
-        const state = props.store.getState();
+        const state = store.getState();
 
         return(
             <Link active={props.filter === state.visibilityFilter} onClick={() =>
@@ -27,6 +29,10 @@ class FilterLink extends React.Component {
             </Link>
         );
     }
+}
+
+FilterLink.contextTypes = {
+    store: React.PropTypes.object
 }
 
 export default FilterLink;
